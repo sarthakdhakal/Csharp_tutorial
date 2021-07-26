@@ -167,6 +167,16 @@ namespace IntroductionToCsharp
             FullTimeEmployee fte = new FullTimeEmployee();
             fte.Name = "John";
             Console.WriteLine(fte.Name);
+            Customer c1 = new Customer();
+            c1.Name = "Shyam";
+            Customer c2 = new Customer();
+            c2.Name = "Simon";
+            Customer c3 = new Customer();
+            c3.Name = "Shree";
+            c1.PrintName();
+            c2.PrintName();
+            c3.PrintName();
+            c1.Print1();
         }
 
         // public static void Multiply(int a, int b, out int product)
@@ -207,9 +217,8 @@ namespace IntroductionToCsharp
     // }
     public class Employee
     {
-       
-        public int age;
-        public string email;
+        public int Age { get; set; }
+        public string Email { get; set; }
 
         public virtual void PrintName()
         {
@@ -246,5 +255,37 @@ namespace IntroductionToCsharp
     public class PartTimeEmployee : Employee
     {
         private double hourlyRate;
+    }
+
+    public struct Customer : ICustomer
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public Customer(int id, string name)
+        {
+            this.Id = id;
+            this.Name = name;
+        }
+
+        public void PrintName()
+        {
+            Console.WriteLine(Name);
+        }
+
+        public void Print1()
+        {
+            Console.WriteLine("Print action performed");
+        }
+    }
+
+    public interface ICustomer : ICustomer1
+    {
+        void PrintName();
+    }
+
+    public interface ICustomer1
+    {
+        void Print1();
     }
 }
