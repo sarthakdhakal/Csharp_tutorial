@@ -9,12 +9,14 @@ using IntroductionToCsharp;
 
 namespace IntroductionToCsharp
 {
-    class Program:Customer
+    public delegate void HelloFriendsDelegate(string shazaam);
+    class Program
     {
-        public override void Print()
-        {
-            Console.WriteLine("Abstract class");
-        }
+        
+        // public override void Print()
+        // {
+        //     Console.WriteLine("Abstract class");
+        // }
         static void Main(string[] args)
         {
             // Console.WriteLine("Input your first number" );
@@ -185,6 +187,9 @@ namespace IntroductionToCsharp
             // ((ICustomer1)c2).PrintName();
             // Customer program = new Program();
             // program.Print();
+            HelloFriendsDelegate del= new HelloFriendsDelegate(HelloDarknessMyOldFriend);
+            del("What up what up?");
+
         }
 
         // public static void Multiply(int a, int b, out int product)
@@ -201,12 +206,17 @@ namespace IntroductionToCsharp
         // {
         //     x = 22;
         // }
+        public static void HelloDarknessMyOldFriend(string shazaam)
+        {
+            Console.WriteLine(shazaam);
+        }
     }
+    
 
-    abstract class Customer
-    {
-        public abstract void Print();
-    }
+    // abstract class Customer
+    // {
+    //     public abstract void Print();
+    // }
     // public class Circle
     // {
     //     static double pi;
