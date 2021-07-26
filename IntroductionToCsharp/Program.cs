@@ -9,8 +9,12 @@ using IntroductionToCsharp;
 
 namespace IntroductionToCsharp
 {
-    class Program
+    class Program:Customer
     {
+        public override void Print()
+        {
+            Console.WriteLine("Abstract class");
+        }
         static void Main(string[] args)
         {
             // Console.WriteLine("Input your first number" );
@@ -179,6 +183,8 @@ namespace IntroductionToCsharp
             // c1.Print1();
             // c1.PrintName();
             // ((ICustomer1)c2).PrintName();
+            // Customer program = new Program();
+            // program.Print();
         }
 
         // public static void Multiply(int a, int b, out int product)
@@ -197,6 +203,10 @@ namespace IntroductionToCsharp
         // }
     }
 
+    abstract class Customer
+    {
+        public abstract void Print();
+    }
     // public class Circle
     // {
     //     static double pi;
