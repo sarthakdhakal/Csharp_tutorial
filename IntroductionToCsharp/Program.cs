@@ -161,9 +161,12 @@ namespace IntroductionToCsharp
             // Add(a, b);
             // ChangeNumber(ref a);
             // Console.WriteLine(a);
-            Circle c1 = new Circle(22);
-            double area = c1.CalculateArea();
-            Console.WriteLine(area);
+            // Circle c1 = new Circle(22);
+            // double area = c1.CalculateArea();
+            // Console.WriteLine(area);
+            FullTimeEmployee fte = new FullTimeEmployee();
+            fte.Name = "John";
+            Console.WriteLine(fte.Name);
         }
 
         // public static void Multiply(int a, int b, out int product)
@@ -182,24 +185,66 @@ namespace IntroductionToCsharp
         // }
     }
 
-    public class Circle
+    // public class Circle
+    // {
+    //     static double pi;
+    //     int radius;
+    //
+    //     static Circle()
+    //     {
+    //         pi = 3.14;
+    //     }
+    //
+    //     public Circle(int radius)
+    //     {
+    //         this.radius = radius;
+    //     }
+    //
+    //     public double CalculateArea()
+    //     {
+    //         return pi * radius * radius;
+    //     }
+    // }
+    public class Employee
     {
-        static double pi;
-        int radius;
+       
+        public int age;
+        public string email;
 
-        static Circle()
+        public virtual void PrintName()
         {
-            pi = 3.14;
+            Console.WriteLine(Name);
         }
+        // public Employee(string name, int age, int email)
+        // {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.email = email;
+        // }
 
-        public Circle(int radius)
-        {
-            this.radius = radius;
-        }
+        // protected Employee()
+        // {
+        //
+        // }
+        public string Name { get; set; }
+        // public void PrintName()
+        // {
+        //     Console.WriteLine(name);
+        // }
+    }
 
-        public double CalculateArea()
+    public class FullTimeEmployee : Employee
+    {
+        private double yearlySalary;
+
+        public override void PrintName()
         {
-            return pi * radius * radius;
+            Console.WriteLine(Name + "fte");
         }
+    }
+
+    public class PartTimeEmployee : Employee
+    {
+        private double hourlyRate;
     }
 }
