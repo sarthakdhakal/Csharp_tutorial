@@ -164,19 +164,21 @@ namespace IntroductionToCsharp
             // Circle c1 = new Circle(22);
             // double area = c1.CalculateArea();
             // Console.WriteLine(area);
-            FullTimeEmployee fte = new FullTimeEmployee();
-            fte.Name = "John";
-            Console.WriteLine(fte.Name);
-            Customer c1 = new Customer();
-            c1.Name = "Shyam";
-            Customer c2 = new Customer();
-            c2.Name = "Simon";
-            Customer c3 = new Customer();
-            c3.Name = "Shree";
-            c1.PrintName();
-            c2.PrintName();
-            c3.PrintName();
-            c1.Print1();
+            // FullTimeEmployee fte = new FullTimeEmployee();
+            // fte.Name = "John";
+            // Console.WriteLine(fte.Name);
+            // Customer c1 = new Customer();
+            // c1.Name = "Shyam";
+            // Customer c2 = new Customer();
+            // c2.Name = "Simon";
+            // Customer c3 = new Customer();
+            // c3.Name = "Shree";
+            // c1.PrintName();
+            // c2.PrintName();
+            // c3.PrintName();
+            // c1.Print1();
+            // c1.PrintName();
+            // ((ICustomer1)c2).PrintName();
         }
 
         // public static void Multiply(int a, int b, out int product)
@@ -215,15 +217,15 @@ namespace IntroductionToCsharp
     //         return pi * radius * radius;
     //     }
     // }
-    public class Employee
-    {
-        public int Age { get; set; }
-        public string Email { get; set; }
-
-        public virtual void PrintName()
-        {
-            Console.WriteLine(Name);
-        }
+    // public class Employee
+    // {
+    //     public int Age { get; set; }
+    //     public string Email { get; set; }
+    //
+    //     public virtual void PrintName()
+    //     {
+    //         Console.WriteLine(Name);
+    //     }
         // public Employee(string name, int age, int email)
         // {
         //     this.name = name;
@@ -235,57 +237,60 @@ namespace IntroductionToCsharp
         // {
         //
         // }
-        public string Name { get; set; }
+        // public string Name { get; set; }
         // public void PrintName()
         // {
         //     Console.WriteLine(name);
         // }
-    }
+    // }
 
-    public class FullTimeEmployee : Employee
-    {
-        private double yearlySalary;
+    // public class FullTimeEmployee : Employee
+    // {
+    //     private double yearlySalary;
+    //
+    //     public override void PrintName()
+    //     {
+    //         Console.WriteLine(Name + "fte");
+    //     }
+    // }
 
-        public override void PrintName()
-        {
-            Console.WriteLine(Name + "fte");
-        }
-    }
+    // public class PartTimeEmployee : Employee
+    // {
+    //     private double hourlyRate;
+    // }
+    //
+    // public struct Customer : ICustomer,ICustomer1
+    // {
+    //     public int Id { get; set; }
+    //     public string Name { get; set; }
+        //
+        // public Customer(int id, string name)
+        // {
+        //     this.Id = id;
+        //     this.Name = name;
+        // }
+        //
+        // public void PrintName()
+        // {
+        //     Console.WriteLine(Name);
+        // }
+        // void ICustomer1.PrintName()
+        // {
+        //     Console.WriteLine(Name);
+    //     }
+    //     public void Print1()
+    //     {
+    //         Console.WriteLine("Print action performed");
+    //     }
+    // }
 
-    public class PartTimeEmployee : Employee
-    {
-        private double hourlyRate;
-    }
+    // public interface ICustomer 
+    // {
+    //     void PrintName();
+    // }
 
-    public struct Customer : ICustomer
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-
-        public Customer(int id, string name)
-        {
-            this.Id = id;
-            this.Name = name;
-        }
-
-        public void PrintName()
-        {
-            Console.WriteLine(Name);
-        }
-
-        public void Print1()
-        {
-            Console.WriteLine("Print action performed");
-        }
-    }
-
-    public interface ICustomer : ICustomer1
-    {
-        void PrintName();
-    }
-
-    public interface ICustomer1
-    {
-        void Print1();
-    }
+    // public interface ICustomer1
+    // {
+    //     void PrintName();
+    // }
 }
