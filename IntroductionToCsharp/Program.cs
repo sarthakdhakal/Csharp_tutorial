@@ -38,7 +38,11 @@ namespace IntroductionToCsharp
             Customers customers = new Customers();
             customers.FirstName = "Ram";
             customers.LastName = "Shyam";
+            Customers customers1 = new Customers();
+            customers1.FirstName = "Ram1";
+            customers1.LastName = "Shyam";
             Console.WriteLine(customers.ToString());
+            Console.WriteLine(customers.Equals(customers1));
 
             #region generics
 
@@ -375,6 +379,22 @@ namespace IntroductionToCsharp
         public override string ToString()
         {
             return this.FirstName + " " + LastName;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+            {
+                return false;
+            }
+
+            if (!(obj is Customers))
+            {
+                return false;
+            }
+
+            return this.FirstName == ((Customers) obj).FirstName &&
+                   LastName == ((Customers) obj).LastName;
         }
     }
     }
