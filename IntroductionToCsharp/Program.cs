@@ -221,31 +221,65 @@ namespace IntroductionToCsharp
             // simpleDelegate += SampleFunction2;
             // simpleDelegate -= SampleFunction;
             // simpleDelegate();
+            // try
+            // {
+            //     streamReader = new StreamReader(@"C:\Users\sarth\OneDrive\Desktop\requirements1.txt");
+            //     Console.WriteLine(streamReader.ReadToEnd());
+            //
+            // }
+            // catch (FileNotFoundException e)
+            // {
+            //     Console.Write(e.FileName + " doesn't exist");
+            //     // Console.Write(e.StackTrace);
+            //
+            // }
+            // catch (Exception e)
+            // {
+            //     Console.Write(e.Message);
+            // }
+            // finally
+            // {
+            //     if (streamReader != null)
+            //     {
+            //         streamReader.Close();
+            //     }
+            //    
+            //     Console.WriteLine("File loaded or exception handled");
+            // }
             try
             {
-                streamReader = new StreamReader(@"C:\Users\sarth\OneDrive\Desktop\requirements1.txt");
-                Console.WriteLine(streamReader.ReadToEnd());
-
-            }
-            catch (FileNotFoundException e)
-            {
-                Console.Write(e.FileName + " doesn't exist");
-                // Console.Write(e.StackTrace);
-
-            }
-            catch (Exception e)
-            {
-                Console.Write(e.Message);
-            }
-            finally
-            {
-                if (streamReader != null)
+                try
                 {
-                    streamReader.Close();
+                    Console.WriteLine("Input a number");
+                    int first = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Input another number");
+                    int second = int.Parse(Console.ReadLine() ?? string.Empty);
+                    int result = first / second;
+                    Console.WriteLine("The divided value is " + result);
+
                 }
-               
-                Console.WriteLine("File loaded or exception handled");
+                catch (Exception e)
+                {
+                    var filePath = @"C:\Users\sarth\OneDrive\Desktop\logS.txt";
+                    if (File.Exists(filePath))
+                    {
+                        StreamWriter streamWriter = new StreamWriter(filePath);
+                        streamWriter.Write(e.GetType().Name);
+                        streamWriter.Close();
+                    }
+                    else
+                    {
+                        throw new FileNotFoundException(filePath + " not found", e);
+                    }
+                }
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.GetType().Name);
+                if (ex.InnerException != null)
+                    Console.WriteLine(ex.InnerException.GetType().Name);
+            }
+        }
         }
 
         // public static void SampleFunction()
@@ -415,4 +449,3 @@ namespace IntroductionToCsharp
     // {
     //     void PrintName();
     // }
-}
