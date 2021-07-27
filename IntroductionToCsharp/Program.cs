@@ -13,19 +13,40 @@ using IntroductionToCsharp;
 
 namespace IntroductionToCsharp
 {
+    #region delegateDeclaration
+
+    
+
+   
     // public delegate void HelloFriendsDelegate(string shazaam);
 
     // public delegate void AVerySimpleDelegate();
-
+    #endregion
     class Program
     {
+        #region codeUsedinPreviousTutorail
+
         // static StreamReader streamReader;
         // public override void Print()
         // {
         //     Console.WriteLine("Abstract class");
         // }
+
+        #endregion
         static void Main(string[] args)
         {
+            bool equal = Calculate.isEqual<string>("X", "X");
+            if (equal)
+            {
+                Console.WriteLine("Equal");
+            }
+            else
+            {
+                Console.WriteLine("Not equal");
+            }
+
+            #region codeUsedInTheMainMethodInPreviousExcercises
+
             // AVerySimpleDelegate simpleDelegate, simpleDelegate1, simpleDelegate2, simpleDelegate3;
             // simpleDelegate1 = new AVerySimpleDelegate(SampleFunction);
             // simpleDelegate2 = new AVerySimpleDelegate(SampleFunction1);
@@ -280,57 +301,81 @@ namespace IntroductionToCsharp
             //     if (ex.InnerException != null)
             //         Console.WriteLine(ex.InnerException.GetType().Name);
             // }
-            Customer[] customers = new Customer[3];
-            customers[0] = new Customer
-            {
-                Name = "Ram",
-                Gender = Gender.Male
-            };
-            customers[1] = new Customer
-            {
-                Name = "Radha",
-                Gender = Gender.Female
-            };
-            customers[2] = new Customer
-            {
-                Name = "Rawan",
-                Gender = Gender.Male
-            };
-            foreach (var customer in customers)
-            {
-                Console.Write(customer.Name);
-                Console.WriteLine(EnumToGender(customer.Gender));
-            }
-        }
 
-        public static string EnumToGender(Gender gender)
-        {
-            switch (gender)
-            {
-                case Gender.Nonbinary:
-                    return "Non binary";
-                case Gender.Male:
-                    return "Male";
-                case Gender.Female:
-                    return "Female";
-                default:
-                    return "Unknown";
-            }
+            #endregion
+
+            #region enums
+
+            // Customer[] customers = new Customer[3];
+            // customers[0] = new Customer
+            // {
+            //     Name = "Ram",
+            //     Gender = Gender.Male
+            // };
+            // customers[1] = new Customer
+            // {
+            //     Name = "Radha",
+            //     Gender = Gender.Female
+            // };
+            // customers[2] = new Customer
+            // {
+            //     Name = "Rawan",
+            //     Gender = Gender.Male
+            // };
+            // foreach (var customer in customers)
+            // {
+            //     Console.Write(customer.Name);
+            //     Console.WriteLine(EnumToGender(customer.Gender));
+            // }
+
+            #endregion
         }
+        #region enums
+
+        // public static string EnumToGender(Gender gender)
+        // {
+        //     switch (gender)
+        //     {
+        //         case Gender.Nonbinary:
+        //             return "Non binary";
+        //         case Gender.Male:
+        //             return "Male";
+        //         case Gender.Female:
+        //             return "Female";
+        //         default:
+        //             return "Unknown";
+        //     }
+        // }
+
+        #endregion
         
+       
     }
 
-    public enum Gender
+    public class Calculate
     {
-        Nonbinary,
-        Male,
-        Female
+        public static bool isEqual<T>(T val1, T val2)
+        {
+            return val1.Equals(val2);
+        }
     }
-    public class Customer
-    {
-        public string Name { get; set; }
-        public Gender Gender { get; set; }
-    }
+    #region enums
+
+    // public enum Gender
+    // {
+    //     Nonbinary,
+    //     Male,
+    //     Female
+    // }
+    // public class Customer
+    // {
+    //     public string Name { get; set; }
+    //     public Gender Gender { get; set; }
+    // }
+
+    #endregion
+    #region codeUsedEarlier
+
     // public static void SampleFunction()
     // {
     //     Console.WriteLine("Here");
@@ -396,9 +441,7 @@ namespace IntroductionToCsharp
     //         }
     //     }
     // }
-}
-
-// abstract class Customer
+    // abstract class Customer
 // {
 //     public abstract void Print();
 // }
@@ -498,3 +541,6 @@ namespace IntroductionToCsharp
 // {
 //     void PrintName();
 // }
+
+    #endregion
+}
