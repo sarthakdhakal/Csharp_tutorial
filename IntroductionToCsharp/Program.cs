@@ -5,6 +5,7 @@ using System.ComponentModel.Design;
 using System.Data.Common;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography;
 using IntroductionToCsharp;
 
@@ -18,12 +19,12 @@ namespace IntroductionToCsharp
 
     class Program
     {
-        static StreamReader streamReader;
+        // static StreamReader streamReader;
         // public override void Print()
         // {
         //     Console.WriteLine("Abstract class");
         // }
-        static void Main(string[] args) 
+        static void Main(string[] args)
         {
             // AVerySimpleDelegate simpleDelegate, simpleDelegate1, simpleDelegate2, simpleDelegate3;
             // simpleDelegate1 = new AVerySimpleDelegate(SampleFunction);
@@ -246,206 +247,254 @@ namespace IntroductionToCsharp
             //    
             //     Console.WriteLine("File loaded or exception handled");
             // }
-            try
+            // try
+            // {
+            //     try
+            //     {
+            //         Console.WriteLine("Input a number");
+            //         int first = Convert.ToInt32(Console.ReadLine());
+            //         Console.WriteLine("Input another number");
+            //         int second = int.Parse(Console.ReadLine() ?? string.Empty);
+            //         int result = first / second;
+            //         Console.WriteLine("The divided value is " + result);
+            //
+            //     }
+            //     catch (Exception e)
+            //     {
+            //         var filePath = @"C:\Users\sarth\OneDrive\Desktop\logS.txt";
+            //         if (File.Exists(filePath))
+            //         {
+            //             StreamWriter streamWriter = new StreamWriter(filePath);
+            //             streamWriter.Write(e.GetType().Name);
+            //             streamWriter.Close();
+            //         }
+            //         else
+            //         {
+            //             throw new FileNotFoundException(filePath + " not found", e);
+            //         }
+            //     }
+            // }
+            // catch (Exception ex)
+            // {
+            //     Console.WriteLine(ex.GetType().Name);
+            //     if (ex.InnerException != null)
+            //         Console.WriteLine(ex.InnerException.GetType().Name);
+            // }
+            Customer[] customers = new Customer[3];
+            customers[0] = new Customer
             {
-                try
-                {
-                    Console.WriteLine("Input a number");
-                    int first = Convert.ToInt32(Console.ReadLine());
-                    Console.WriteLine("Input another number");
-                    int second = int.Parse(Console.ReadLine() ?? string.Empty);
-                    int result = first / second;
-                    Console.WriteLine("The divided value is " + result);
-
-                }
-                catch (Exception e)
-                {
-                    var filePath = @"C:\Users\sarth\OneDrive\Desktop\logS.txt";
-                    if (File.Exists(filePath))
-                    {
-                        StreamWriter streamWriter = new StreamWriter(filePath);
-                        streamWriter.Write(e.GetType().Name);
-                        streamWriter.Close();
-                    }
-                    else
-                    {
-                        throw new FileNotFoundException(filePath + " not found", e);
-                    }
-                }
-            }
-            catch (Exception ex)
+                Name = "Ram",
+                Gender = Gender.Male
+            };
+            customers[1] = new Customer
             {
-                Console.WriteLine(ex.GetType().Name);
-                if (ex.InnerException != null)
-                    Console.WriteLine(ex.InnerException.GetType().Name);
+                Name = "Radha",
+                Gender = Gender.Female
+            };
+            customers[2] = new Customer
+            {
+                Name = "Rawan",
+                Gender = Gender.Male
+            };
+            foreach (var customer in customers)
+            {
+                Console.Write(customer.Name);
+                Console.WriteLine(EnumToGender(customer.Gender));
             }
         }
+
+        public static string EnumToGender(Gender gender)
+        {
+            switch (gender)
+            {
+                case Gender.Nonbinary:
+                    return "Non binary";
+                case Gender.Male:
+                    return "Male";
+                case Gender.Female:
+                    return "Female";
+                default:
+                    return "Unknown";
+            }
         }
-
-        // public static void SampleFunction()
-        // {
-        //     Console.WriteLine("Here");
-        // }
-        //
-        // public static void SampleFunction1()
-        // {
-        //     Console.WriteLine("Here1");
-        // }
-        //
-        // public static void SampleFunction2()
-        // {
-        //     Console.WriteLine("Here2");
-        // }
-        // public static bool IsEligibleToPromote(Chef chef)
-        // {
-        //     if (chef.Experience >= 3)
-        //     {
-        //         return true;
-        //     }
-        //     else
-        //     {
-        //         return false;
-        //     }
-        // }
-        // public static void Multiply(int a, int b, out int product)
-        // {
-        //     product= a * b;
-        // }
-        //
-        // public static void Add(int a, int b)
-        // {
-        //     Console.WriteLine(a + b);
-        // }
-        //
-        // public static void ChangeNumber(ref int x)
-        // {
-        //     x = 22;
-        // }
-        // public static void HelloDarknessMyOldFriend(string shazaam)
-        // {
-        //     Console.WriteLine(shazaam);
-        // }
-
-
-        // public delegate bool IsPromotable(Chef chef);
-
-        // public class Chef
-        // {
-        //     public int Id { get; set; }
-        //     public string Name { get; set; }
-        //     public double Salary { get; set; }
-        //     public int Experience  { get; set; }
-
-        // public static void ChefPromote(List<Chef> chefList, IsPromotable isPromotable)
-        // {
-        //     foreach (Chef chef in chefList)
-        //
-        //     {
-        //         if (isPromotable(chef))
-        //         {
-        //             Console.WriteLine(chef.Name + " is promoted");
-        //         }
-        //     }
-        // }
+        
     }
 
-    // abstract class Customer
+    public enum Gender
+    {
+        Nonbinary,
+        Male,
+        Female
+    }
+    public class Customer
+    {
+        public string Name { get; set; }
+        public Gender Gender { get; set; }
+    }
+    // public static void SampleFunction()
     // {
-    //     public abstract void Print();
+    //     Console.WriteLine("Here");
     // }
-    // public class Circle
+    //
+    // public static void SampleFunction1()
     // {
-    //     static double pi;
-    //     int radius;
+    //     Console.WriteLine("Here1");
+    // }
     //
-    //     static Circle()
+    // public static void SampleFunction2()
+    // {
+    //     Console.WriteLine("Here2");
+    // }
+    // public static bool IsEligibleToPromote(Chef chef)
+    // {
+    //     if (chef.Experience >= 3)
     //     {
-    //         pi = 3.14;
+    //         return true;
     //     }
-    //
-    //     public Circle(int radius)
+    //     else
     //     {
-    //         this.radius = radius;
-    //     }
-    //
-    //     public double CalculateArea()
-    //     {
-    //         return pi * radius * radius;
+    //         return false;
     //     }
     // }
-    // public class Employee
+    // public static void Multiply(int a, int b, out int product)
     // {
-    //     public int Age { get; set; }
-    //     public string Email { get; set; }
+    //     product= a * b;
+    // }
     //
-    //     public virtual void PrintName()
-    //     {
-    //         Console.WriteLine(Name);
-    //     }
-    // public Employee(string name, int age, int email)
+    // public static void Add(int a, int b)
     // {
-    //     this.name = name;
-    //     this.age = age;
-    //     this.email = email;
+    //     Console.WriteLine(a + b);
+    // }
+    //
+    // public static void ChangeNumber(ref int x)
+    // {
+    //     x = 22;
+    // }
+    // public static void HelloDarknessMyOldFriend(string shazaam)
+    // {
+    //     Console.WriteLine(shazaam);
     // }
 
-    // protected Employee()
-    // {
-    //
-    // }
-    // public string Name { get; set; }
-    // public void PrintName()
-    // {
-    //     Console.WriteLine(name);
-    // }
-    // }
 
-    // public class FullTimeEmployee : Employee
-    // {
-    //     private double yearlySalary;
-    //
-    //     public override void PrintName()
-    //     {
-    //         Console.WriteLine(Name + "fte");
-    //     }
-    // }
+    // public delegate bool IsPromotable(Chef chef);
 
-    // public class PartTimeEmployee : Employee
-    // {
-    //     private double hourlyRate;
-    // }
-    //
-    // public struct Customer : ICustomer,ICustomer1
+    // public class Chef
     // {
     //     public int Id { get; set; }
     //     public string Name { get; set; }
+    //     public double Salary { get; set; }
+    //     public int Experience  { get; set; }
+
+    // public static void ChefPromote(List<Chef> chefList, IsPromotable isPromotable)
+    // {
+    //     foreach (Chef chef in chefList)
     //
-    // public Customer(int id, string name)
-    // {
-    //     this.Id = id;
-    //     this.Name = name;
-    // }
-    //
-    // public void PrintName()
-    // {
-    //     Console.WriteLine(Name);
-    // }
-    // void ICustomer1.PrintName()
-    // {
-    //     Console.WriteLine(Name);
-    //     }
-    //     public void Print1()
     //     {
-    //         Console.WriteLine("Print action performed");
+    //         if (isPromotable(chef))
+    //         {
+    //             Console.WriteLine(chef.Name + " is promoted");
+    //         }
     //     }
     // }
+}
 
-    // public interface ICustomer 
-    // {
-    //     void PrintName();
-    // }
+// abstract class Customer
+// {
+//     public abstract void Print();
+// }
+// public class Circle
+// {
+//     static double pi;
+//     int radius;
+//
+//     static Circle()
+//     {
+//         pi = 3.14;
+//     }
+//
+//     public Circle(int radius)
+//     {
+//         this.radius = radius;
+//     }
+//
+//     public double CalculateArea()
+//     {
+//         return pi * radius * radius;
+//     }
+// }
+// public class Employee
+// {
+//     public int Age { get; set; }
+//     public string Email { get; set; }
+//
+//     public virtual void PrintName()
+//     {
+//         Console.WriteLine(Name);
+//     }
+// public Employee(string name, int age, int email)
+// {
+//     this.name = name;
+//     this.age = age;
+//     this.email = email;
+// }
 
-    // public interface ICustomer1
-    // {
-    //     void PrintName();
-    // }
+// protected Employee()
+// {
+//
+// }
+// public string Name { get; set; }
+// public void PrintName()
+// {
+//     Console.WriteLine(name);
+// }
+// }
+
+// public class FullTimeEmployee : Employee
+// {
+//     private double yearlySalary;
+//
+//     public override void PrintName()
+//     {
+//         Console.WriteLine(Name + "fte");
+//     }
+// }
+
+// public class PartTimeEmployee : Employee
+// {
+//     private double hourlyRate;
+// }
+//
+// public struct Customer : ICustomer,ICustomer1
+// {
+//     public int Id { get; set; }
+//     public string Name { get; set; }
+//
+// public Customer(int id, string name)
+// {
+//     this.Id = id;
+//     this.Name = name;
+// }
+//
+// public void PrintName()
+// {
+//     Console.WriteLine(Name);
+// }
+// void ICustomer1.PrintName()
+// {
+//     Console.WriteLine(Name);
+//     }
+//     public void Print1()
+//     {
+//         Console.WriteLine("Print action performed");
+//     }
+// }
+
+// public interface ICustomer 
+// {
+//     void PrintName();
+// }
+
+// public interface ICustomer1
+// {
+//     void PrintName();
+// }
