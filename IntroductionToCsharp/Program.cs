@@ -10,9 +10,9 @@ using IntroductionToCsharp;
 namespace IntroductionToCsharp
 {
     public delegate void HelloFriendsDelegate(string shazaam);
+
     class Program
     {
-        
         // public override void Print()
         // {
         //     Console.WriteLine("Abstract class");
@@ -187,11 +187,30 @@ namespace IntroductionToCsharp
             // ((ICustomer1)c2).PrintName();
             // Customer program = new Program();
             // program.Print();
-            HelloFriendsDelegate del= new HelloFriendsDelegate(HelloDarknessMyOldFriend);
-            del("What up what up?");
-
+            // HelloFriendsDelegate del= new HelloFriendsDelegate(HelloDarknessMyOldFriend);
+            // del("What up what up?");
+            List<Chef> chefList = new List<Chef>();
+            chefList.Add(new Chef()
+            {
+                Id = 1, Name = "John", Salary = 50000, Experience = 3
+            });
+            chefList.Add(new Chef()
+            {
+                Id = 2, Name = "Mary", Salary = 50000, Experience = 2
+            });
+            chefList.Add(new Chef()
+            {
+                Id = 3, Name = "Shyam", Salary = 70000, Experience = 5
+            });
         }
 
+        // public bool IsEligibleToPromote()
+        // {
+        //     if ()
+        //     {
+        //         
+        //     }
+        // }
         // public static void Multiply(int a, int b, out int product)
         // {
         //     product= a * b;
@@ -206,12 +225,33 @@ namespace IntroductionToCsharp
         // {
         //     x = 22;
         // }
-        public static void HelloDarknessMyOldFriend(string shazaam)
+        // public static void HelloDarknessMyOldFriend(string shazaam)
+        // {
+        //     Console.WriteLine(shazaam);
+        // }
+    }
+
+    delegate bool IsPromotable(Chef chef);
+
+    public class Chef
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public double Salary { get; set; }
+        public int Experience { get; set; }
+
+        public static void ChefPromote(List<Chef> chefList)
         {
-            Console.WriteLine(shazaam);
+            foreach (Chef chef in chefList)
+
+            {
+                if (chef.Experience >= 3)
+                {
+                    Console.WriteLine(chef.Name + "is promoted");
+                }
+            }
         }
     }
-    
 
     // abstract class Customer
     // {
@@ -246,22 +286,22 @@ namespace IntroductionToCsharp
     //     {
     //         Console.WriteLine(Name);
     //     }
-        // public Employee(string name, int age, int email)
-        // {
-        //     this.name = name;
-        //     this.age = age;
-        //     this.email = email;
-        // }
+    // public Employee(string name, int age, int email)
+    // {
+    //     this.name = name;
+    //     this.age = age;
+    //     this.email = email;
+    // }
 
-        // protected Employee()
-        // {
-        //
-        // }
-        // public string Name { get; set; }
-        // public void PrintName()
-        // {
-        //     Console.WriteLine(name);
-        // }
+    // protected Employee()
+    // {
+    //
+    // }
+    // public string Name { get; set; }
+    // public void PrintName()
+    // {
+    //     Console.WriteLine(name);
+    // }
     // }
 
     // public class FullTimeEmployee : Employee
@@ -283,20 +323,20 @@ namespace IntroductionToCsharp
     // {
     //     public int Id { get; set; }
     //     public string Name { get; set; }
-        //
-        // public Customer(int id, string name)
-        // {
-        //     this.Id = id;
-        //     this.Name = name;
-        // }
-        //
-        // public void PrintName()
-        // {
-        //     Console.WriteLine(Name);
-        // }
-        // void ICustomer1.PrintName()
-        // {
-        //     Console.WriteLine(Name);
+    //
+    // public Customer(int id, string name)
+    // {
+    //     this.Id = id;
+    //     this.Name = name;
+    // }
+    //
+    // public void PrintName()
+    // {
+    //     Console.WriteLine(Name);
+    // }
+    // void ICustomer1.PrintName()
+    // {
+    //     Console.WriteLine(Name);
     //     }
     //     public void Print1()
     //     {
