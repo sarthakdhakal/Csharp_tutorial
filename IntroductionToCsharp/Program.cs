@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design;
 using System.Data.Common;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using IntroductionToCsharp;
@@ -17,11 +18,12 @@ namespace IntroductionToCsharp
 
     class Program
     {
+        static StreamReader streamReader;
         // public override void Print()
         // {
         //     Console.WriteLine("Abstract class");
         // }
-        static void Main(string[] args)
+        static void Main(string[] args) 
         {
             // AVerySimpleDelegate simpleDelegate, simpleDelegate1, simpleDelegate2, simpleDelegate3;
             // simpleDelegate1 = new AVerySimpleDelegate(SampleFunction);
@@ -219,7 +221,32 @@ namespace IntroductionToCsharp
             // simpleDelegate += SampleFunction2;
             // simpleDelegate -= SampleFunction;
             // simpleDelegate();
-        }   
+            try
+            {
+                streamReader = new StreamReader(@"C:\Users\sarth\OneDrive\Desktop\requirements1.txt");
+                Console.WriteLine(streamReader.ReadToEnd());
+
+            }
+            catch (FileNotFoundException e)
+            {
+                Console.Write(e.FileName + " doesn't exist");
+                // Console.Write(e.StackTrace);
+
+            }
+            catch (Exception e)
+            {
+                Console.Write(e.Message);
+            }
+            finally
+            {
+                if (streamReader != null)
+                {
+                    streamReader.Close();
+                }
+               
+                Console.WriteLine("File loaded or exception handled");
+            }
+        }
 
         // public static void SampleFunction()
         // {
