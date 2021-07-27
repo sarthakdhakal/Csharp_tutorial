@@ -348,17 +348,96 @@ namespace IntroductionToCsharp
 
             #endregion
 
-            
-            StringBuilder str = new StringBuilder("");
-            for (int i = 1; i < 10000; i++)
-            {
-                str.Append("i");
-                // str.Append(" ");
-                Console.Write(i+" ");
-            }
-            
-        }
+            #region stringBuilder
 
+            // StringBuilder str = new StringBuilder("");
+            // for (int i = 1; i < 10000; i++)
+            // {
+            //     str.Append("i");
+            //     // str.Append(" ");
+            //     Console.Write(i+" ");
+            // }
+
+            #endregion
+
+            #region Dictionary
+
+            
+
+           
+            Customers customers = new Customers()
+            {
+                Id = 1,
+                FirstName = "Harry",
+                Salary = 50000
+            };
+            Customers customers1 = new Customers()
+            {
+                Id = 2,
+                FirstName = "Hari",
+                Salary = 500000
+            };
+            Customers customers2 = new Customers()
+            {
+                Id = 3,
+                FirstName = "Mary",
+                Salary = 5000
+            };
+            Customers customers3 = new Customers()
+            {
+                Id = 4,
+                FirstName = "Darry",
+                Salary = 40000
+            };
+            Customers customers4 = new Customers()
+            {
+                Id = 5,
+                FirstName = "Gary",
+                Salary = 30000
+            };
+            Dictionary<int, Customers> dictionary = new Dictionary<int, Customers>();
+            dictionary.Add(customers.Id, customers);
+            dictionary.Add(customers1.Id, customers1);
+            dictionary.Add(customers2.Id, customers2);
+            dictionary.Add(customers3.Id, customers3);
+            dictionary.Add(customers4.Id, customers4);
+            Console.WriteLine(dictionary.Count(s => s.Value.Salary > 6000));
+            Customers customers11 = dictionary[1];
+            Console.WriteLine("The id={0} , name = {1} and salary = {2}", customers11.Id, customers11.FirstName,
+                customers11.Salary);
+            foreach (KeyValuePair<int, Customers> customerValuePair in dictionary)
+            {
+                Console.WriteLine(customerValuePair.Key);
+                Customers customer = customerValuePair.Value;
+                Console.WriteLine("The id is {0}, name is {1} and the salary is {2}", customer.Id, customer.FirstName,
+                    customer.Salary);
+            }
+
+            Customers cust;
+            if (dictionary.TryGetValue(1, out cust))
+            {
+                Console.WriteLine("The id is {0}, name is {1} and the salary is {2}", cust.Id, cust.FirstName,
+                    cust.Salary);
+            }
+
+            List<Customers> customersArray = new List<Customers>();
+            customersArray.Add(customers);
+            customersArray.Add(customers1);
+            customersArray.Add(customers2);
+            customersArray.Add(customers3);
+            customersArray.Add(customers4);
+            Dictionary<int, Customers> dict = customersArray.ToDictionary(custo => custo.Id, custo
+                => custo);
+            foreach (KeyValuePair<int, Customers> custData in dict)
+            {
+                Console.WriteLine(custData.Key);
+                Console.WriteLine("The id is {0}, name is {1} and the salary is {2}", custData.Value.Id,
+                    custData.Value.FirstName,
+                    custData.Value.Salary);
+            }
+            #endregion
+        }
+    
         #region enums
 
         // public static string EnumToGender(Gender gender)
@@ -379,6 +458,13 @@ namespace IntroductionToCsharp
         #endregion
     }
 
+    public class Customers
+    {
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public double Salary { get; set; }
+    }
+
     #region classForGenerics
 
     // public class Calculate
@@ -392,9 +478,6 @@ namespace IntroductionToCsharp
 
     #region classForOverRiding
 
-    
-
-  
     // public class Customers
     // {
     //     public string FirstName { get; set; }
@@ -421,6 +504,7 @@ namespace IntroductionToCsharp
     //                LastName == ((Customers) obj).LastName;
     //     }
     // }
+
     #endregion
 }
 
