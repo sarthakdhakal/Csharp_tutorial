@@ -35,15 +35,24 @@ namespace IntroductionToCsharp
         #endregion
         static void Main(string[] args)
         {
-            bool equal = Calculate.isEqual<string>("X", "X");
-            if (equal)
-            {
-                Console.WriteLine("Equal");
-            }
-            else
-            {
-                Console.WriteLine("Not equal");
-            }
+            Customers customers = new Customers();
+            customers.FirstName = "Ram";
+            customers.LastName = "Shyam";
+            Console.WriteLine(customers.ToString());
+
+            #region generics
+
+            // bool equal = Calculate.isEqual<string>("X", "X");
+            // if (equal)
+            // {
+            //     Console.WriteLine("Equal");
+            // }
+            // else
+            // {
+            //     Console.WriteLine("Not equal");
+            // }
+
+            #endregion
 
             #region codeUsedInTheMainMethodInPreviousExcercises
 
@@ -348,16 +357,26 @@ namespace IntroductionToCsharp
         // }
 
         #endregion
-        
-       
     }
 
-    public class Calculate
+    #region classForGenerics
+    // public class Calculate
+    // {
+    //     public static bool isEqual<T>(T val1, T val2)
+    //     {
+    //         return val1.Equals(val2);
+    //     }
+    #endregion
+
+    public class Customers
     {
-        public static bool isEqual<T>(T val1, T val2)
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public override string ToString()
         {
-            return val1.Equals(val2);
+            return this.FirstName + " " + LastName;
         }
+    }
     }
     #region enums
 
@@ -543,4 +562,3 @@ namespace IntroductionToCsharp
 // }
 
     #endregion
-}
