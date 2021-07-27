@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Data.Common;
 using System.Linq;
+using System.Security.Cryptography;
 using IntroductionToCsharp;
 
 // using static Data.Data;
 
 namespace IntroductionToCsharp
 {
-    public delegate void HelloFriendsDelegate(string shazaam);
+    // public delegate void HelloFriendsDelegate(string shazaam);
+
+    // public delegate void AVerySimpleDelegate();
 
     class Program
     {
@@ -19,6 +23,12 @@ namespace IntroductionToCsharp
         // }
         static void Main(string[] args)
         {
+            // AVerySimpleDelegate simpleDelegate, simpleDelegate1, simpleDelegate2, simpleDelegate3;
+            // simpleDelegate1 = new AVerySimpleDelegate(SampleFunction);
+            // simpleDelegate2 = new AVerySimpleDelegate(SampleFunction1);
+            // simpleDelegate3 = new AVerySimpleDelegate(SampleFunction2);
+            // simpleDelegate = simpleDelegate1 + simpleDelegate2 + simpleDelegate3;
+            // simpleDelegate();
             // Console.WriteLine("Input your first number" );
             // double num1 = Convert.ToDouble(Console.ReadLine());
             // Console.WriteLine("Input your second number" );
@@ -189,26 +199,51 @@ namespace IntroductionToCsharp
             // program.Print();
             // HelloFriendsDelegate del= new HelloFriendsDelegate(HelloDarknessMyOldFriend);
             // del("What up what up?");
-            List<Chef> chefList = new List<Chef>();
-            chefList.Add(new Chef()
-            {
-                Id = 1, Name = "John", Salary = 50000, Experience = 3
-            });
-            chefList.Add(new Chef()
-            {
-                Id = 2, Name = "Mary", Salary = 50000, Experience = 2
-            });
-            chefList.Add(new Chef()
-            {
-                Id = 3, Name = "Shyam", Salary = 70000, Experience = 5
-            });
-        }
+            // List<Chef> chefList = new List<Chef>();
+            // chefList.Add(new Chef()
+            // {
+            //     Id = 1, Name = "John", Salary = 50000, Experience = 3
+            // });
+            // chefList.Add(new Chef()
+            // {
+            //     Id = 2, Name = "Mary", Salary = 50000, Experience = 2
+            // });
+            // chefList.Add(new Chef()
+            // {
+            //     Id = 3, Name = "Shyam", Salary = 70000, Experience = 5
+            // });
+            // // IsPromotable isPromotable = new IsPromotable(IsEligibleToPromote);
+            // Chef.ChefPromote(chefList, chef=>chef.Experience>=2);
+            // AVerySimpleDelegate simpleDelegate = SampleFunction;
+            // simpleDelegate += SampleFunction1;
+            // simpleDelegate += SampleFunction2;
+            // simpleDelegate -= SampleFunction;
+            // simpleDelegate();
+        }   
 
-        // public bool IsEligibleToPromote()
+        // public static void SampleFunction()
         // {
-        //     if ()
+        //     Console.WriteLine("Here");
+        // }
+        //
+        // public static void SampleFunction1()
+        // {
+        //     Console.WriteLine("Here1");
+        // }
+        //
+        // public static void SampleFunction2()
+        // {
+        //     Console.WriteLine("Here2");
+        // }
+        // public static bool IsEligibleToPromote(Chef chef)
+        // {
+        //     if (chef.Experience >= 3)
         //     {
-        //         
+        //         return true;
+        //     }
+        //     else
+        //     {
+        //         return false;
         //     }
         // }
         // public static void Multiply(int a, int b, out int product)
@@ -229,28 +264,28 @@ namespace IntroductionToCsharp
         // {
         //     Console.WriteLine(shazaam);
         // }
-    }
 
-    delegate bool IsPromotable(Chef chef);
 
-    public class Chef
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public double Salary { get; set; }
-        public int Experience { get; set; }
+        // public delegate bool IsPromotable(Chef chef);
 
-        public static void ChefPromote(List<Chef> chefList)
-        {
-            foreach (Chef chef in chefList)
+        // public class Chef
+        // {
+        //     public int Id { get; set; }
+        //     public string Name { get; set; }
+        //     public double Salary { get; set; }
+        //     public int Experience  { get; set; }
 
-            {
-                if (chef.Experience >= 3)
-                {
-                    Console.WriteLine(chef.Name + "is promoted");
-                }
-            }
-        }
+        // public static void ChefPromote(List<Chef> chefList, IsPromotable isPromotable)
+        // {
+        //     foreach (Chef chef in chefList)
+        //
+        //     {
+        //         if (isPromotable(chef))
+        //         {
+        //             Console.WriteLine(chef.Name + " is promoted");
+        //         }
+        //     }
+        // }
     }
 
     // abstract class Customer
