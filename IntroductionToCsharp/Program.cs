@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography;
+using System.Text;
 using IntroductionToCsharp;
 
 // using static Data.Data;
@@ -15,13 +16,12 @@ namespace IntroductionToCsharp
 {
     #region delegateDeclaration
 
-    
-
-   
     // public delegate void HelloFriendsDelegate(string shazaam);
 
     // public delegate void AVerySimpleDelegate();
+
     #endregion
+
     class Program
     {
         #region codeUsedinPreviousTutorail
@@ -33,16 +33,21 @@ namespace IntroductionToCsharp
         // }
 
         #endregion
+
         static void Main(string[] args)
         {
-            Customers customers = new Customers();
-            customers.FirstName = "Ram";
-            customers.LastName = "Shyam";
-            Customers customers1 = new Customers();
-            customers1.FirstName = "Ram1";
-            customers1.LastName = "Shyam";
-            Console.WriteLine(customers.ToString());
-            Console.WriteLine(customers.Equals(customers1));
+            #region overloading of builtInFunctions
+
+            // Customers customers = new Customers();
+            // customers.FirstName = "Ram";
+            // customers.LastName = "Shyam";
+            // Customers customers1 = new Customers();
+            // customers1.FirstName = "Ram1";
+            // customers1.LastName = "Shyam";
+            // Console.WriteLine(customers.ToString());
+            // Console.WriteLine(customers.Equals(customers1));
+
+            #endregion
 
             #region generics
 
@@ -342,7 +347,18 @@ namespace IntroductionToCsharp
             // }
 
             #endregion
+
+            
+            StringBuilder str = new StringBuilder("");
+            for (int i = 1; i < 10000; i++)
+            {
+                str.Append("i");
+                // str.Append(" ");
+                Console.Write(i+" ");
+            }
+            
         }
+
         #region enums
 
         // public static string EnumToGender(Gender gender)
@@ -364,123 +380,134 @@ namespace IntroductionToCsharp
     }
 
     #region classForGenerics
+
     // public class Calculate
     // {
     //     public static bool isEqual<T>(T val1, T val2)
     //     {
     //         return val1.Equals(val2);
     //     }
-    #endregion
-
-    public class Customers
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public override string ToString()
-        {
-            return this.FirstName + " " + LastName;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null)
-            {
-                return false;
-            }
-
-            if (!(obj is Customers))
-            {
-                return false;
-            }
-
-            return this.FirstName == ((Customers) obj).FirstName &&
-                   LastName == ((Customers) obj).LastName;
-        }
-    }
-    }
-    #region enums
-
-    // public enum Gender
-    // {
-    //     Nonbinary,
-    //     Male,
-    //     Female
-    // }
-    // public class Customer
-    // {
-    //     public string Name { get; set; }
-    //     public Gender Gender { get; set; }
-    // }
 
     #endregion
-    #region codeUsedEarlier
 
-    // public static void SampleFunction()
+    #region classForOverRiding
+
+    
+
+  
+    // public class Customers
     // {
-    //     Console.WriteLine("Here");
-    // }
+    //     public string FirstName { get; set; }
+    //     public string LastName { get; set; }
     //
-    // public static void SampleFunction1()
-    // {
-    //     Console.WriteLine("Here1");
-    // }
-    //
-    // public static void SampleFunction2()
-    // {
-    //     Console.WriteLine("Here2");
-    // }
-    // public static bool IsEligibleToPromote(Chef chef)
-    // {
-    //     if (chef.Experience >= 3)
+    //     public override string ToString()
     //     {
-    //         return true;
+    //         return this.FirstName + " " + LastName;
     //     }
-    //     else
+    //
+    //     public override bool Equals(object obj)
     //     {
-    //         return false;
-    //     }
-    // }
-    // public static void Multiply(int a, int b, out int product)
-    // {
-    //     product= a * b;
-    // }
-    //
-    // public static void Add(int a, int b)
-    // {
-    //     Console.WriteLine(a + b);
-    // }
-    //
-    // public static void ChangeNumber(ref int x)
-    // {
-    //     x = 22;
-    // }
-    // public static void HelloDarknessMyOldFriend(string shazaam)
-    // {
-    //     Console.WriteLine(shazaam);
-    // }
-
-
-    // public delegate bool IsPromotable(Chef chef);
-
-    // public class Chef
-    // {
-    //     public int Id { get; set; }
-    //     public string Name { get; set; }
-    //     public double Salary { get; set; }
-    //     public int Experience  { get; set; }
-
-    // public static void ChefPromote(List<Chef> chefList, IsPromotable isPromotable)
-    // {
-    //     foreach (Chef chef in chefList)
-    //
-    //     {
-    //         if (isPromotable(chef))
+    //         if (obj == null)
     //         {
-    //             Console.WriteLine(chef.Name + " is promoted");
+    //             return false;
     //         }
+    //
+    //         if (!(obj is Customers))
+    //         {
+    //             return false;
+    //         }
+    //
+    //         return this.FirstName == ((Customers) obj).FirstName &&
+    //                LastName == ((Customers) obj).LastName;
     //     }
     // }
-    // abstract class Customer
+    #endregion
+}
+
+#region enums
+
+// public enum Gender
+// {
+//     Nonbinary,
+//     Male,
+//     Female
+// }
+// public class Customer
+// {
+//     public string Name { get; set; }
+//     public Gender Gender { get; set; }
+// }
+
+#endregion
+
+#region codeUsedEarlier
+
+// public static void SampleFunction()
+// {
+//     Console.WriteLine("Here");
+// }
+//
+// public static void SampleFunction1()
+// {
+//     Console.WriteLine("Here1");
+// }
+//
+// public static void SampleFunction2()
+// {
+//     Console.WriteLine("Here2");
+// }
+// public static bool IsEligibleToPromote(Chef chef)
+// {
+//     if (chef.Experience >= 3)
+//     {
+//         return true;
+//     }
+//     else
+//     {
+//         return false;
+//     }
+// }
+// public static void Multiply(int a, int b, out int product)
+// {
+//     product= a * b;
+// }
+//
+// public static void Add(int a, int b)
+// {
+//     Console.WriteLine(a + b);
+// }
+//
+// public static void ChangeNumber(ref int x)
+// {
+//     x = 22;
+// }
+// public static void HelloDarknessMyOldFriend(string shazaam)
+// {
+//     Console.WriteLine(shazaam);
+// }
+
+
+// public delegate bool IsPromotable(Chef chef);
+
+// public class Chef
+// {
+//     public int Id { get; set; }
+//     public string Name { get; set; }
+//     public double Salary { get; set; }
+//     public int Experience  { get; set; }
+
+// public static void ChefPromote(List<Chef> chefList, IsPromotable isPromotable)
+// {
+//     foreach (Chef chef in chefList)
+//
+//     {
+//         if (isPromotable(chef))
+//         {
+//             Console.WriteLine(chef.Name + " is promoted");
+//         }
+//     }
+// }
+// abstract class Customer
 // {
 //     public abstract void Print();
 // }
@@ -581,4 +608,4 @@ namespace IntroductionToCsharp
 //     void PrintName();
 // }
 
-    #endregion
+#endregion
